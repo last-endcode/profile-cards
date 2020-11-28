@@ -126,71 +126,73 @@ p {
   text-align: center;
   margin: 4rem 0 6rem 0;
 }
+
 /*
 =============== 
 Card 1
 ===============
 */
 
-/* kartu dulu */
+/* card is generic for reuse by each card-1,card-2,and 3 */
 .card {
   width: 90vw;
+  /* get to center and top/bottom 4rem */
   margin: 4rem auto;
   background: var(--clr-white);
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
 }
 
-/* gambar dibuat radius */
 .card img {
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
+  width: 125px;
+  height: 125px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
-/* get smaller card */
+/* get card be smalller use card-1 */
 .card-1 {
-  max-width: 440px;
+  max-width: 450px;
   text-align: center;
-  /* beri ruang ke bawah button agar button tdk di ujung */
   padding-bottom: 3.5rem;
 }
 
+/* beri tinggi pada background & beri background */
 .card-1 header {
-  /* beri tinggi pada header tuk background */
   height: 200px;
   background: url('./images/ocean.jpeg') center/cover;
-  border-top-left-radius: var(--radius);
-  border-top-right-radius: var(--radius);
+  border-radius: var(--radius);
 }
 
+/* simpan img pada posisi tengah header */
 .card-1 img {
+  margin-top: -62px;
   border: 5px solid var(--clr-white);
-  margin-top: -65px;
   margin-bottom: 0.5rem;
 }
 
+/* change size */
 .card-1 h4 {
   font-size: 1.25rem;
 }
 
+/* change p agar tidak panjang */
 .card-1 p {
+  font-size: 18px;
+  color: var(--clr-grey-3);
   padding: 0 2rem;
   margin-bottom: 2rem;
-  color: var(--clr-grey-1);
-  font-size: 0.875rem;
 }
 
 .btn {
   padding: 1rem 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  font-size: 0.875rem;
   background: var(--clr-ui-dark-blue);
   color: var(--clr-white);
-  border-radius: var(--radius);
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 1rem;
   border-color: transparent;
+  border-radius: var(--radius);
   cursor: pointer;
 }
 
@@ -200,10 +202,11 @@ Card 2
 ===============
 */
 .card-2 {
-  max-width: 640px;
+  max-width: 650px;
   display: grid;
   grid-template-columns: auto 1fr;
-  padding: 2rem 2.5rem;
+  padding: 2.5rem;
+  /* beri jarak antar column agar tidak merempet */
   column-gap: 3rem;
 }
 
@@ -211,9 +214,11 @@ Card 2
   font-size: 26px;
 }
 
+/* here 2 paragraph terpisah jarak krna
+margin-bottom default is 1.25rem change be 0 */
 .card-2 p {
-  font-size: 18px;
   margin-bottom: 0;
+  font-size: 18px;
 }
 
 .card-2 .btn {
@@ -221,62 +226,28 @@ Card 2
   background: transparent;
   border: 2px solid var(--clr-ui-dark-blue);
   color: var(--clr-ui-dark-blue);
-  /* beri ketebalan */
   font-weight: bold;
 }
 
+/* dri minimal hingga maximal 776px
+card-2 max-width akan berubah dan max-width sama dgn card-1,
+jika sudah melebihi max akan default kembali ke 650px
+*/
 @media screen and (max-width: 776px) {
   .card-2 {
-    max-width: 440px;
+    max-width: 450px;
     grid-template-columns: 1fr;
-    /* row auto for img */
     grid-template-rows: auto 1fr;
     row-gap: 2rem;
-    justify-items: center;
     text-align: center;
+    /* here img tidak akan pindah ke center, 
+    for solution use justify-items */
+    justify-items: center;
   }
 }
+
 /*
 =============== 
 Card 3
 ===============
 */
-.card-3 {
-  /* get biggger size */
-  max-width: 770px;
-  display: grid;
-  /* auto for img,btn and 1fr for inner div likes card-3-links */
-  grid-template-columns: auto 1fr auto;
-  /* remember column tuk dismping */
-  column-gap: 3rem;
-  /* beri ruang padding krna photo trlalu dekat dgn batasan card */
-  padding: 2rem 3rem;
-  align-items: center;
-}
-
-.card-3 h4 {
-  font-size: 2rem;
-}
-
-.card-3 .btn {
-  align-self: flex-start;
-}
-.card-3 .card-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-@media screen and (max-width: 992px) {
-  .card-3 {
-    max-width: 440px;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr 1fr;
-    justify-items: center;
-    text-align: center;
-    row-gap: 1rem;
-  }
-
-  .card-3 .btn {
-    margin-top: 1.25rem;
-  }
-}
